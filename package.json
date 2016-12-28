@@ -1,0 +1,21 @@
+{
+  "name": "nativescript-utilities",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "jshint src",
+    "build": "npm run lint && rm -rf dist && babel src --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nathan Hill",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "jshint": "^2.9.4"
+  },
+  "dependencies": {
+    "parameter-validator": "git@github.com:MyPureCloud/parameter-validator.git"
+  }
+}
