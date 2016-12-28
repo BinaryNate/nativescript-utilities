@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.convertNSArrayToArray = convertNSArrayToArray;
-exports.convertReferenceToUint8Array = convertReferenceToUint8Array;
+exports.convertPointerToUint8Array = convertPointerToUint8Array;
 /* globals interop */
 
 /**
@@ -25,16 +25,16 @@ function convertNSArrayToArray(nsarray) {
 }
 
 /**
-* Converts a reference to an array of bytes to a Uint8Array.
+* Converts a pointer to an array of bytes to a Uint8Array.
 *
-* @param   {interop.Reference} reference
-* @param   {int}               length
+* @param   {interop.Pointer} pointer
+* @param   {int}             length
 * @returns {Uint8Array}
 */
-function convertReferenceToUint8Array(reference, length) {
+function convertPointerToUint8Array(pointer, length) {
 
-    if (!(reference instanceof interop.Reference)) {
-        throw new Error('The first parameter must be an interop.Reference instance.');
+    if (!(pointer instanceof interop.Pointer)) {
+        throw new Error('The first parameter must be an interop.Pointer instance.');
     }
     if (!Number.isInteger(length)) {
         throw new Error('The second parameter must be an integer.');
@@ -44,7 +44,7 @@ function convertReferenceToUint8Array(reference, length) {
 
     for (var byteIndex = 0; byteIndex < length; byteIndex++) {
 
-        var bytePointer = reference.add(byteIndex),
+        var bytePointer = pointer.add(byteIndex),
             byteReference = new interop.Reference(interop.types.uint8, bytePointer);
 
         uint8Array[byteIndex] = byteReference.value;
