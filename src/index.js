@@ -44,3 +44,23 @@ export function convertPointerToUint8Array(pointer, length) {
     }
     return uint8Array;
 }
+
+/**
+* Converts a Uint8Array to an interop.Reference instance.
+*
+* @param   {Uint8Array}        array
+* @returns {interop.Reference}
+*/
+export function convertUint8ArrayToReference(array) {
+
+    if (!(array instanceof Uint8Array)) {
+        throw new Error('The parameter must be a Uint8Array instance.');
+    }
+
+    let pointer = interop.alloc(array.length * interop.sizeof(interop.types.uint8)),
+        reference = new interop.Reference(interop.types.uint8, pointer);
+
+    array.forEach((byte, index) => reference[index] = byte);
+
+    return reference;
+}
