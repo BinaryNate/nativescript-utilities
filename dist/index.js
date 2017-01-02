@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.convertNSArrayToArray = convertNSArrayToArray;
 exports.convertPointerToUint8Array = convertPointerToUint8Array;
 exports.convertUint8ArrayToReference = convertUint8ArrayToReference;
+exports.convertReferenceToString = convertReferenceToString;
+exports.convertUint8ArrayToString = convertUint8ArrayToString;
 /* globals interop */
 
 /**
@@ -73,4 +75,54 @@ function convertUint8ArrayToReference(array) {
     });
 
     return reference;
+}
+
+/**
+* Converts a reference to a null-terminated C string to a JavaScript string.
+*
+* @param   {interop.Reference} stringReference
+* @returns {string}
+*/
+function convertReferenceToString(stringReference) {
+
+    if (!(stringReference instanceof interop.Reference)) {
+        throw new Error('stringReference value \'' + stringReference + '\' is not a Reference instance.');
+    }
+
+    var charCode = void 0,
+        string = '',
+        index = 0;
+
+    do {
+        charCode = stringReference[index];
+        string += String.fromCharCode(charCode);
+        index++;
+    } while (charCode !== 0);
+
+    return string;
+}
+
+/**
+* Converts a Uint8Array containing a null-terminated C string to a JavaScript string.
+*
+* @param   {Uint8Array} array
+* @returns {string}
+*/
+function convertUint8ArrayToString(array) {
+
+    if (!(array instanceof Uint8Array)) {
+        throw new Error('array value \'' + array + '\' is not a Uint8Array instance.');
+    }
+
+    var charCode = void 0,
+        string = '',
+        index = 0;
+
+    while (charCode !== 0 && index < array.length) {
+        charCode = array[index];
+        string += String.fromCharCode(charCode);
+        index++;
+    }
+
+    return string;
 }
