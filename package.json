@@ -16,6 +16,6 @@
     "jshint": "^2.9.4"
   },
   "dependencies": {
-    "parameter-validator": "git@github.com:MyPureCloud/parameter-validator.git"
+    "parameter-validator": "^1.0.0"
   }
 }
