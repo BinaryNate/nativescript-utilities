@@ -34,7 +34,8 @@ A Logger that implements a Winston-style logging interface.
     * [.info(message, metadata)](#Logger+info)
     * [.error(message, metadata)](#Logger+error)
     * [.warn(message, metadata)](#Logger+warn)
-    * [._expandErrors()](#Logger+_expandErrors)
+    * [.verbose(message, metadata)](#Logger+verbose)
+    * [.silly(message, metadata)](#Logger+silly)
 
 <a name="Logger+info"></a>
 
@@ -72,12 +73,30 @@ Logs a message at the debug level and prepends it with 'WARN: '.
 | message | <code>string</code> | Main message to log |
 | metadata | <code>Object</code> | Additional data that will be serialized and logged. |
 
-<a name="Logger+_expandErrors"></a>
+<a name="Logger+verbose"></a>
 
-### logger._expandErrors()
-Replaces error objects included in the metadata with their stack traces.
+### logger.verbose(message, metadata)
+Logs a message at the debug level.
 
 **Kind**: instance method of <code>[Logger](#Logger)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| message | <code>string</code> | Main message to log |
+| metadata | <code>Object</code> | Additional data that will be serialized and logged. |
+
+<a name="Logger+silly"></a>
+
+### logger.silly(message, metadata)
+Logs a message at the debug level.
+
+**Kind**: instance method of <code>[Logger](#Logger)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| message | <code>string</code> | Main message to log |
+| metadata | <code>Object</code> | Additional data that will be serialized and logged. |
+
 <a name="convertPointerToUint8Array"></a>
 
 ## convertPointerToUint8Array(pointer, length) ⇒ <code>Uint8Array</code>

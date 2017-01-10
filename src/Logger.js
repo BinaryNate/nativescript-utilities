@@ -47,7 +47,28 @@ class Logger {
     }
 
     /**
+    * Logs a message at the debug level.
+    *
+    * @param {string} message  - Main message to log
+    * @param {Object} metadata - Additional data that will be serialized and logged.
+    */
+    verbose(...args) {
+        this.info(...args);
+    }
+
+    /**
+    * Logs a message at the debug level.
+    *
+    * @param {string} message  - Main message to log
+    * @param {Object} metadata - Additional data that will be serialized and logged.
+    */
+    silly(...args) {
+        this.info(...args);
+    }
+
+    /**
     * Replaces error objects included in the metadata with their stack traces.
+    * @private
     */
     _expandErrors(metadata) {
 

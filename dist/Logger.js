@@ -71,7 +71,34 @@ var Logger = function () {
         }
 
         /**
+        * Logs a message at the debug level.
+        *
+        * @param {string} message  - Main message to log
+        * @param {Object} metadata - Additional data that will be serialized and logged.
+        */
+
+    }, {
+        key: 'verbose',
+        value: function verbose() {
+            this.info.apply(this, arguments);
+        }
+
+        /**
+        * Logs a message at the debug level.
+        *
+        * @param {string} message  - Main message to log
+        * @param {Object} metadata - Additional data that will be serialized and logged.
+        */
+
+    }, {
+        key: 'silly',
+        value: function silly() {
+            this.info.apply(this, arguments);
+        }
+
+        /**
         * Replaces error objects included in the metadata with their stack traces.
+        * @private
         */
 
     }, {
