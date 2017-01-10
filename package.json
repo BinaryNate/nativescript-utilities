@@ -1,18 +1,37 @@
 {
   "name": "nativescript-utilities",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A collection of reusable NativeScript utility classes and functions.",
+  "keywords": [
+    "NativeScript",
+    "Uint8Array",
+    "ArrayBuffer",
+    "Reference",
+    "Pointer",
+    "convert",
+    "conversion",
+    "logger",
+    "util",
+    "utility",
+    "utilities",
+    "functions",
+    "classes",
+    "interop"
+  ],
   "main": "dist/index.js",
+  "repository": "https://github.com/BinaryNate/nativescript-utilities",
   "scripts": {
     "lint": "jshint src",
     "build": "npm run lint && rm -rf dist && babel src --out-dir dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc2md src/*.js > docs/api.md"
   },
   "author": "Nathan Hill",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-preset-latest": "^6.16.0",
+    "jsdoc-to-markdown": "^2.0.1",
     "jshint": "^2.9.4"
   },
   "dependencies": {

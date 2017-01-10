@@ -3,29 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.convertNSArrayToArray = convertNSArrayToArray;
+exports.Logger = undefined;
 exports.convertPointerToUint8Array = convertPointerToUint8Array;
 exports.convertUint8ArrayToReference = convertUint8ArrayToReference;
 exports.convertReferenceToString = convertReferenceToString;
 exports.convertUint8ArrayToString = convertUint8ArrayToString;
-/* globals interop */
 
-/**
-* Converts an NSArray from the Objective-C runtime to a JavaScript array.
-*
-* @param   {NSArray|NSMutableArray} nsarray
-* @returns {Array}
-*/
-function convertNSArrayToArray(nsarray) {
+var _Logger2 = require('./Logger');
 
-    var array = [];
+var _Logger3 = _interopRequireDefault(_Logger2);
 
-    for (var i = 0; i < nsarray.count; i++) {
-        array.push(nsarray.objectAtIndex(i));
-    }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-    return array;
-}
+var Logger = exports.Logger = _Logger3.default;
 
 /**
 * Converts a pointer to an array of bytes to a Uint8Array.
@@ -34,6 +24,8 @@ function convertNSArrayToArray(nsarray) {
 * @param   {int}             length
 * @returns {Uint8Array}
 */
+/* globals interop */
+
 function convertPointerToUint8Array(pointer, length) {
 
     if (!(pointer instanceof interop.Pointer)) {
